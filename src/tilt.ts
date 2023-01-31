@@ -1,12 +1,21 @@
+/**
+ * @fileoverview Tilt.js (rewrite) - A tiny 60+fps parallax tilt effect for javscript.
+ * @version 1.0.0
+ * @license MIT,
+ * @author Linus J inspired by Gijs Rogé
+ */
+
+// rewrite of https://gijsroge.github.io/tilt.js/ with TypeScript compiles to javascript
+// No dependencies, no jquery
+// Planing on native support for React
+// https://github.com/gijsroge/tilt.js
+
 type Config = {
-    transform: {
-        perspective: number,
-        rotateX: number,
-        rotateY: number,
-        scaleX: number,
-        scaleY: number,
-        scaleZ: number
-    },
+    perspective: number,
+    rotateX: number,
+    rotateY: number,
+    scale: number,
+    reset: boolean
 }
 
 const transformString = (
@@ -21,14 +30,11 @@ const transformString = (
 }
 
 const defaultConfig = {
-    transform: {
-        perspective: 500,
-        rotateX: 0,
-        rotateY: 0,
-        scaleX: 1.12,
-        scaleY: 1.12,
-        scaleZ: 1.12
-    }
+    perspective: 500,
+    rotateX: 0,
+    rotateY: 0,
+    scale: 1,
+    reset: true
 } as Config;
 
 const tilt = (
@@ -45,7 +51,7 @@ const tilt = (
     let element_center_x = element_width / 2;
     let element_center_y = element_height / 2;
 
-    element.addEventListener('mousemove', (event: MouseEvent<Element, MouseEvent>) => {
+    element.addEventListener('mousemove', (event: MouseEvent) => {
         let mouse_x = event.offsetX;
         let mouse_y = event.offsetY;
 
