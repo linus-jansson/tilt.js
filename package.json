@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/linus-jansson/tilt.js/issues"
   },
-  "homepage": "https://github.com/linus-jansson/tilt.js#readme"
+  "homepage": "https://github.com/linus-jansson/tilt.js#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }
